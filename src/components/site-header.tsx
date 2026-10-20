@@ -35,7 +35,7 @@ export function SiteHeader() {
 
   return (
     <header className={`site-header${isMenuOpen ? " menu-open" : ""}`} onKeyDown={handleMenuKeyDown}>
-      <a className="wordmark" href="#top" aria-label={`${portfolio.name}, home`} onClick={handleNavigationClick}>
+      <a className="wordmark" href="#top" aria-label={`${portfolio.name || "Portfolio"}, home`} onClick={handleNavigationClick}>
         {portfolio.monogram}<span className="wordmark-period">/</span>
       </a>
       <button
