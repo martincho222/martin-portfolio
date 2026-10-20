@@ -2,6 +2,10 @@ import Image from "next/image";
 import { portfolio, type Project } from "@/data/portfolio";
 import { SiteHeader } from "@/components/site-header";
 
+const coreTechnologies = portfolio.expertise.find(
+  (group) => group.category === "Core",
+)?.items;
+
 function ProjectVisual({ project }: { project: Project }) {
   return (
     <div className={`project-visual project-visual--${project.number}`} aria-hidden={!project.image}>
@@ -81,18 +85,20 @@ export function PortfolioPage() {
         >
           <div className="hero-kicker">
             <span className="kicker-line" />
-            <span>FRONTEND ENGINEER</span>
-            <span className="kicker-since">/ SINCE 2020</span>
+            <span>{portfolio.hero.eyebrow.split("/")[0].trim()}</span>
+            <span className="kicker-since">
+              / {portfolio.hero.eyebrow.split("/").slice(1).join("/").trim()}
+            </span>
           </div>
           <div className="hero-layout">
             <div className="hero-copy">
               <h1 id="hero-title">
-                Interfaces <br />
-                built with <br />
-                <em>product judgment.</em>
+                {portfolio.hero.headline}
+                <br />
+                <em>{portfolio.hero.headlineAccent}</em>
               </h1>
-              <p className="hero-intro">{portfolio.introduction}</p>
-              <p className="hero-summary">{portfolio.summary}</p>
+              <p className="hero-intro">{portfolio.hero.introduction}</p>
+              <p className="hero-summary">{portfolio.hero.summary}</p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#work">
                   Explore selected work <span aria-hidden="true">↓</span>
@@ -111,7 +117,7 @@ export function PortfolioPage() {
                 <div className="art-cross art-cross--one" />
                 <div className="art-cross art-cross--two" />
                 <div className="art-disc">
-                  <span>M</span>
+                  <span>{portfolio.monogram.replace(".", "")}</span>
                 </div>
                 <div className="art-square" />
                 <div className="art-orbit" />
@@ -124,7 +130,7 @@ export function PortfolioPage() {
             </div>
           </div>
           <div className="hero-foot">
-            <span>REACT · NEXT.JS · TYPESCRIPT</span>
+            <span>{coreTechnologies?.join(" · ")}</span>
             <a href="#work">
               SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
             </a>
@@ -271,18 +277,13 @@ export function PortfolioPage() {
           <div className="about-copy">
             <p className="section-index">05 — A LITTLE ABOUT ME</p>
             <h2 id="about-title">
-              Care about 
+              {portfolio.about.heading}{" "}
               <br />
-              the decision, <em>not just the code.</em>
+              <em>{portfolio.about.headingAccent}</em>
             </h2>
-            <p>
-             I’ve worked in frontend development since 2020, building web applications with React, Next.js, and TypeScript. I started at weKnow Inc., developing and maintaining internal company applications and adding features that improved the tools their teams used daily. At GlobalLogic, a Hitachi Group digital engineering company, I built interfaces and led technology migrations for internal tools at Claro. Today, at Baufest, I develop and migrate internal applications for Banco Galicia.
-            </p>
-            <p>
-Working on internal products has shaped how I build. Their users depend on them to get work done, so clarity, reliability, and a safe path from the old system to the new one matter more than novelty. I like asking why before deciding how, weighing trade-offs, and leaving behind code that other people can read and change with confidence.
-
-            </p>
-            <p>I’m based in Tucumán, Argentina, and open to opportunities with product-focused teams.</p>
+            {portfolio.about.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </section>
 
@@ -344,13 +345,37 @@ Working on internal products has shaped how I build. Their users depend on them 
       </main>
 
       <footer className="site-footer section-shell">
-        <a className="wordmark" href="#top" aria-label="Back to top">
-          {portfolio.monogram}
-          <span className="wordmark-period">/</span>
-        </a>
-        <span>DESIGNED TO BE MADE YOURS</span>
-        <a href="#top">BACK TO TOP ↑</a>
-        <span>© {portfolio.name}</span>
+        <div className="footer-main">
+          <div className="footer-brand">
+            <a
+              className="wordmark"
+              href="#top"
+              aria-label={`${portfolio.footer.backToTopLabel}${portfolio.name ? ` — ${portfolio.name}` : ""}`}
+            >
+              {portfolio.monogram}
+              <span className="wordmark-period">/</span>
+            </a>
+            <div className="footer-brand-copy">
+              {portfolio.name && <span className="footer-name">{portfolio.name}</span>}
+              <p className="footer-note">{portfolio.footer.note}</p>
+            </div>
+          </div>
+          <nav className="footer-links" aria-label="Footer links">
+            {portfolio.email && <a href={`mailto:${portfolio.email}`}>Email <span aria-hidden="true">↗</span></a>}
+            {portfolio.linkedinUrl && <a href={portfolio.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>}
+            {portfolio.githubUrl && <a href={portfolio.githubUrl} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>}
+            {portfolio.resumeUrl && <a href={portfolio.resumeUrl}>Resume <span aria-hidden="true">↗</span></a>}
+          </nav>
+          <a className="footer-top-link" href="#top">
+            {portfolio.footer.backToTopLabel} <span aria-hidden="true">↑</span>
+          </a>
+        </div>
+        <div className="footer-meta">
+          <span className="location-style">{portfolio.location}</span>
+          <p className="footer-copyright">
+            © {portfolio.name ? `${portfolio.name}. ` : ""}{portfolio.footer.copyright}
+          </p>
+        </div>
       </footer>
     </>
   );

@@ -2,17 +2,21 @@ import type { Metadata } from "next";
 import { portfolio } from "@/data/portfolio";
 import "./globals.css";
 
-const pageTitle = `${portfolio.name} | Martin Jerez Leal — Frontend Engineer (React, Next.js, TypeScript)`;
-const pageDescription =
-  "Frontend Engineer in Tucumán, Argentina, working with React, Next.js, TypeScript, and Tailwind CSS. Building web experiences since 2020.";
+const pageTitle = portfolio.seo.title;
+const pageDescription = portfolio.seo.description;
+const siteName = portfolio.name.trim()
+  ? `${portfolio.name} — Portfolio`
+  : "Frontend Engineer Portfolio";
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
-  applicationName: `${portfolio.name} — Portfolio`,
-  authors: [{ name: portfolio.name }],
-  creator: portfolio.name,
-  publisher: portfolio.name,
+  applicationName: siteName,
+  ...(portfolio.name.trim() && {
+    authors: [{ name: portfolio.name }],
+    creator: portfolio.name,
+    publisher: portfolio.name,
+  }),
   keywords: [
     "Frontend Engineer",
     "React",
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: pageTitle,
     description: pageDescription,
-    siteName: `${portfolio.name} — Portfolio`,
+    siteName,
     locale: "en_US",
     type: "website",
   },
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
     title: pageTitle,
     description: pageDescription,
   },
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
