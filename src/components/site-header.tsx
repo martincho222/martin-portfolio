@@ -5,6 +5,7 @@ import { portfolio } from "@/data/portfolio";
 
 const navigation = [
   { href: "#work", label: "Work" },
+  { href: "#experience", label: "Experience" },
   { href: "#about", label: "About" },
   { href: "#approach", label: "Approach" },
   { href: "#contact", label: "Contact" },

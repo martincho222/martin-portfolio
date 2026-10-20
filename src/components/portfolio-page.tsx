@@ -80,19 +80,16 @@ export function PortfolioPage() {
           aria-labelledby="hero-title"
         >
           <div className="hero-kicker">
-            <span className="kicker-line" /> FRONTEND ENGINEER{" "}
+            <span className="kicker-line" />
+            <span>FRONTEND ENGINEER</span>
             <span className="kicker-since">/ SINCE 2020</span>
           </div>
           <div className="hero-layout">
             <div className="hero-copy">
-              <p className="hero-eyebrow">
-                {portfolio.name} <span>— {portfolio.location}</span>
-              </p>
               <h1 id="hero-title">
-                Building <br />
-                interfaces.
-                <br />
-                <em>that make a difference</em>
+                Interfaces <br />
+                built with <br />
+                <em>product judgment.</em>
               </h1>
               <p className="hero-intro">{portfolio.introduction}</p>
               <p className="hero-summary">{portfolio.summary}</p>
@@ -225,32 +222,67 @@ export function PortfolioPage() {
         </section>
 
         <section
+          className="experience-section section-shell"
+          id="experience"
+          aria-labelledby="experience-title"
+        >
+          <div className="experience-heading">
+            <div>
+              <p className="section-index">04 — EXPERIENCE</p>
+              <h2 id="experience-title">
+                Work shaped by
+                <br />
+                <em>real-world tools.</em>
+              </h2>
+            </div>
+            <p className="section-aside">
+              Building and evolving internal applications across different teams and products.
+            </p>
+          </div>
+          <ol className="experience-list">
+            {portfolio.experience.map((item, index) => (
+              <li className="experience-item" key={`${item.company}-${item.period}`}>
+                <span className="experience-number">0{index + 1}</span>
+                <div className="experience-main">
+                  <div className="experience-company-line">
+                    <h3>{item.company}</h3>
+                    {item.affiliation && <span className="experience-affiliation">{item.affiliation}</span>}
+                  </div>
+                  <p className="experience-description">{item.description}</p>
+                </div>
+                <div className="experience-meta">
+                  <span>{item.role}</span>
+                  <span>{item.period}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section
           className="about-section section-shell"
           id="about"
           aria-labelledby="about-title"
         >
           <div className="about-marker" aria-hidden="true">
             <span>ABOUT</span>
-            <span>04 / 05</span>
+            <span>05 / 06</span>
           </div>
           <div className="about-copy">
-            <p className="section-index">04 — A LITTLE ABOUT ME</p>
+            <p className="section-index">05 — A LITTLE ABOUT ME</p>
             <h2 id="about-title">
-              Care about the
+              Care about 
               <br />
-              craft. <em>Always.</em>
+              the decision, <em>not just the code.</em>
             </h2>
             <p>
-              I’m a Frontend Engineer working in the field since 2020. I care
-              about the details people feel: clear interactions, thoughtful
-              visual rhythm, and code that stays understandable as a product
-              grows.
+             I’ve worked in frontend development since 2020, building web applications with React, Next.js, and TypeScript. I started at weKnow Inc., developing and maintaining internal company applications and adding features that improved the tools their teams used daily. At GlobalLogic, a Hitachi Group digital engineering company, I built interfaces and led technology migrations for internal tools at Claro. Today, at Baufest, I develop and migrate internal applications for Banco Galicia.
             </p>
             <p>
-              This space is yours to make personal. Add your background,
-              location, and the specifics of how you work—only what’s true to
-              you.
+Working on internal products has shaped how I build. Their users depend on them to get work done, so clarity, reliability, and a safe path from the old system to the new one matter more than novelty. I like asking why before deciding how, weighing trade-offs, and leaving behind code that other people can read and change with confidence.
+
             </p>
+            <p>I’m based in Tucumán, Argentina, and open to opportunities with product-focused teams.</p>
           </div>
         </section>
 
@@ -260,7 +292,7 @@ export function PortfolioPage() {
           aria-labelledby="contact-title"
         >
           <div className="contact-topline">
-            <p className="section-index">05 — CONTACT</p>
+            <p className="section-index">06 — CONTACT</p>
             <span>GOOD THINGS START WITH A CONVERSATION</span>
           </div>
           <h2 id="contact-title">

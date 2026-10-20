@@ -18,26 +18,57 @@ export type Project = {
   };
 };
 
+export type Experience = {
+  company: string;
+  affiliation?: string;
+  role: string;
+  period: string;
+  description: string;
+};
+
 export const portfolio = {
-  name: "Martin Jerez Leal",
+  name: "",
   monogram: "M.",
   location: "Tucumán - Argentina",
   availableForOpportunities: true,
   introduction:
-    "I'm a Frontend Engineer with experience since 2020, specializing in React, Next.js, and TypeScript. I turn ideas into polished, high-performance web experiences through pixel-perfect interfaces, clean code, and thoughtful engineering.",
-  summary:"",
+    "I’m Martin, a Frontend Engineer working with React, Next.js, and TypeScript since 2020. I start from the problem: who uses the product, what it needs to do, and what it will cost to change later. Then I build the simplest interface and architecture that holds up.",
+  summary: "Product-minded engineering. Considered interfaces. Code built to last.",
   email: "martincho111986@gmail.com",
   linkedinUrl: "https://www.linkedin.com/in/martin-jerez-leal/?isSelfProfile=true",
   githubUrl: "https://github.com/martincho222",
   resumeUrl: "",
   expertise: [
-    { category: "Core", items: ["React", "Next.js", "TypeScript", "NodeJS", "NestJS"] },
+    { category: "Core", items: ["React", "Next.js", "TypeScript"] },
     { category: "Styling", items: ["Tailwind CSS", "SASS", "CSS"] },
     { category: "Engineering", items: ["Testing", "CI/CD", "Code Reviews", "SOLID Principles", "Clean Code"] },
     { category: "Tools", items: ["VS Code", "Git", "Figma", "Postman"] },
-    { category: "Methodologies", items: ["Agile Methodologies"] },
-    { category: "Soft Skills", items: ["Communication", "Collaboration", "Problem Solving", "Adaptability", "Teamwork", "Ownership"] }
+    { category: "Backend", items: ["GraphQL", "REST APIs", "NodeJS", "NestJS"] }
   ],
+  experience: [
+    {
+      company: "Baufest",
+      role: "Frontend Developer",
+      period: "2025 – Present",
+      description:
+        "Internal applications for Banco Galicia: development and migration.",
+    },
+    {
+      company: "GlobalLogic",
+      affiliation: "Hitachi Group",
+      role: "Frontend Developer",
+      period: "2021 – 2025",
+      description:
+        "Interfaces and technology migrations for Claro’s internal tools.",
+    },
+    {
+      company: "weKnow Inc.",
+      role: "Full Stack Developer",
+      period: "2020 – 2021",
+      description:
+        "Development and maintenance of internal company applications.",
+    },
+  ] satisfies Experience[],
   projects: [
     {
       id: "project-one",
