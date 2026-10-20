@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: pageTitle,
     description: pageDescription,
   },
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: "/favicon.ico", shortcut: "/favicon.ico" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
