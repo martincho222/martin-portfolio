@@ -77,7 +77,7 @@ export const portfolio: Portfolio = {
   name: "Martin Jerez Leal",
   monogram: "M.",
   location: "Tucumán, Argentina",
-  availableForOpportunities: true,
+  availableForOpportunities: false,
 
   seo: {
     title: "Martin Jerez Leal — Frontend Developer (React, Next.js, TypeScript)",
